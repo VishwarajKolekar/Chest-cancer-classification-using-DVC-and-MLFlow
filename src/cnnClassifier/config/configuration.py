@@ -13,6 +13,7 @@ class ConfigurationManager:
         self.params = read_yaml(params_filepath)
 
         create_directories([self.config.artifacts_root])
+        create_directories([self.config.model_root])
 
 
     
@@ -75,7 +76,7 @@ class ConfigurationManager:
 
     def get_evaluation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
-            path_of_model="artifacts/training/model.h5",
+            path_of_model="model/training/model.h5",
             training_data="artifacts/data_ingestion/Chest-CT-Scan-data",
             mlflow_uri="https://dagshub.com/VishwarajKolekar/Chest-cancer-classification-using-DVC-and-MLFlow.mlflow",
             all_params=self.params,
